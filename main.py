@@ -1,6 +1,9 @@
-from collections import defaultdict
+from typing import List
 
-if __name__ == '__main__':
-    d = defaultdict(int)
-    print(d[0])
-    print(d)
+
+class Solution:
+    pass
+
+
+if __name__ == "__main__":
+    pass
