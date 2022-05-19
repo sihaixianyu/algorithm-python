@@ -1,6 +1,7 @@
 from typing import List
 
 
+# 股票买卖问题：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         dp_empty = [[0] * (k + 1) for _ in range(len(prices))]
