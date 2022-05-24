@@ -24,6 +24,7 @@ class BinaryTree:
         skip = 0
         while idx < len(nums) and len(queue) > 0:
             if nums[idx] == null:
+                # 当前节点值为null，skip+1表示跳过一个分支，将此位置留空
                 skip += 1
                 idx += 1
             else:
@@ -35,9 +36,9 @@ class BinaryTree:
                         curr.left = node
                         queue.append(node)
                         idx += 1
+                        continue
                     else:
                         skip -= 1
-                    continue
 
                 if curr.right is None:
                     if skip == 0:
