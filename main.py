@@ -4,4 +4,6 @@ class Main:
 
 
 if __name__ == "__main__":
+    l1 = [0] * 10
+    print(l1)
     print("Hello, World!")

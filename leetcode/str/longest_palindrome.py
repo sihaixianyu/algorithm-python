@@ -1,3 +1,4 @@
+# 最长回文子串：https://leetcode.cn/problems/longest-palindromic-substring/
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         res = ""
