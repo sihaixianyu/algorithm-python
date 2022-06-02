@@ -9,9 +9,19 @@ class Solution:
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
         for i in range(n):
-            for j in range(0, int(n / 2)):
+            for j in range(0, n // 2):
                 arr = matrix[i]
                 arr[j], arr[n - 1 - j] = arr[n - 1 - j], arr[j]
+
+    def rotate2(self, matrix: List[List[int]]) -> None:
+        n = len(matrix)
+        temp_mat = [[0] * n for _ in range(n)]
+
+        for i in range(0, n):
+            for j in range(0, n):
+                temp_mat[j][n - 1 - i] = matrix[i][j]
+
+        matrix[:] = temp_mat
 
 
 if __name__ == "__main__":
@@ -20,7 +30,7 @@ if __name__ == "__main__":
         [4, 5, 6],
         [7, 8, 9],
     ]
-    Solution().rotate(matrix)
+    Solution().rotate2(matrix)
     assert [
         [7, 4, 1],
         [8, 5, 2],
@@ -33,7 +43,7 @@ if __name__ == "__main__":
         [13, 3, 6, 7],
         [15, 14, 12, 16],
     ]
-    Solution().rotate(matrix)
+    Solution().rotate2(matrix)
     assert [
         [15, 13, 2, 5],
         [14, 3, 4, 1],
