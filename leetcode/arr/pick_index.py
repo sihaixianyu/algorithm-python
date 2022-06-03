@@ -1,20 +1,6 @@
+from bisect import bisect_left
 from random import randint
 from typing import List
-
-
-def binary_search(nums: List[int], tar: int) -> int:
-    lp, rp = 0, len(nums)
-
-    while lp < rp:
-        mid = lp + (rp - lp) // 2
-        if nums[mid] == tar:
-            rp = mid
-        elif nums[mid] < tar:
-            lp = mid + 1
-        elif nums[mid] > tar:
-            rp = mid
-
-    return lp
 
 
 class Solution:
@@ -27,7 +13,7 @@ class Solution:
 
     def pickIndex(self) -> int:
         rand_num = randint(1, self.pref_sum[-1])
-        idx = binary_search(self.pref_sum, rand_num)
+        idx = bisect_left(self.pref_sum, rand_num)
 
         return idx - 1
 
