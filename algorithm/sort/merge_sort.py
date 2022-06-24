@@ -21,7 +21,8 @@ def merge(nums: List[int], left: int, mid: int, right: int):
 
     lp, rp = left, mid + 1
     while lp <= mid and rp <= right:
-        if nums[lp] < nums[rp]:
+        # 注意这个地方必须使用`<=`，否则在比较左右列表相同元素时会更改相对顺序，算法会变得不稳定
+        if nums[lp] <= nums[rp]:
             temp.append(nums[lp])
             lp += 1
         else:
