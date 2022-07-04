@@ -4,6 +4,7 @@ from typing import List
 Pair = namedtuple("Pair", ["idx", "val"])
 
 
+# 计算右侧小于当前元素的个数：https://leetcode.cn/problems/count-of-smaller-numbers-after-self/submissions/
 class Solution:
     def __init__(self):
         self.cnts = []

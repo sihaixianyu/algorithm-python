@@ -1,45 +1,30 @@
 from typing import List
 
 
-class Border:
-    def __init__(self, up, down, left, right):
-        self.up = up
-        self.down = down
-        self.left = left
-        self.right = right
-
-    def check(self) -> bool:
-        if self.up - self.down == 1 or self.left - self.right == 1:
-            return False
-
-        return True
-
-
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         res = []
-        border = Border(0, len(matrix) - 1, 0, len(matrix[0]) - 1)
+        m, n = len(matrix), len(matrix[0])
+        up, down = 0, m - 1
+        left, right = 0, n - 1
 
-        i, j = 0, 0
-        direction = (0, 1)
-        while border.check():
-            res.append(matrix[i][j])
-
-            if i + direction[0] < border.up:
-                border.left += 1
-                direction = (0, 1)
-            elif i + direction[0] > border.down:
-                border.right -= 1
-                direction = (0, -1)
-            elif j + direction[1] < border.left:
-                border.down -= 1
-                direction = (-1, 0)
-            elif j + direction[1] > border.right:
-                border.up += 1
-                direction = (1, 0)
-
-            i += direction[0]
-            j += direction[1]
+        while len(res) < m * n:
+            if up <= down:
+                for j in range(left, right + 1):
+                    res.append(matrix[up][j])
+                up += 1
+            if left <= right:
+                for i in range(up, down + 1):
+                    res.append(matrix[i][right])
+                right -= 1
+            if up <= down:
+                for j in range(right, left - 1, -1):
+                    res.append(matrix[down][j])
+                down -= 1
+            if left <= right:
+                for i in range(down, up - 1, -1):
+                    res.append(matrix[i][left])
+                left += 1
 
         return res
 
