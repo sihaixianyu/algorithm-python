@@ -5,24 +5,24 @@ class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         res = []
         m, n = len(matrix), len(matrix[0])
-        up, down = 0, m - 1
+        top, bottom = 0, m - 1
         left, right = 0, n - 1
 
         while len(res) < m * n:
-            if up <= down:
+            if top <= bottom:
                 for j in range(left, right + 1):
-                    res.append(matrix[up][j])
-                up += 1
+                    res.append(matrix[top][j])
+                top += 1
             if left <= right:
-                for i in range(up, down + 1):
+                for i in range(top, bottom + 1):
                     res.append(matrix[i][right])
                 right -= 1
-            if up <= down:
+            if top <= bottom:
                 for j in range(right, left - 1, -1):
-                    res.append(matrix[down][j])
-                down -= 1
+                    res.append(matrix[bottom][j])
+                bottom -= 1
             if left <= right:
-                for i in range(down, up - 1, -1):
+                for i in range(bottom, top - 1, -1):
                     res.append(matrix[i][left])
                 left += 1
 
