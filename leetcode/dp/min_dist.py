@@ -13,29 +13,29 @@ class Solution:
 
         return dp(len(word1) - 1, len(word2) - 1)
 
-    def minDistance2(self, word1: str, word2: str) -> int:
+    def minDistance_(self, word1: str, word2: str) -> int:
         m, n = len(word1), len(word2)
-        memo = [[-1] * (n) for _ in range(m)]
+        memo = [[-1] * (n + 1) for _ in range(m + 1)]
 
         def dp(i, j):
-            if i == -1:
-                return j + 1
-            if j == -1:
-                return i + 1
-
+            if i == 0:
+                return j
+            if j == 0:
+                return i
+            
             if memo[i][j] != -1:
                 return memo[i][j]
 
-            if word1[i] == word2[j]:
+            if word1[i - 1] == word2[j - 1]:
                 memo[i][j] = dp(i - 1, j - 1)
             else:
                 memo[i][j] = min(dp(i, j - 1) + 1, dp(i - 1, j) + 1, dp(i - 1, j - 1) + 1)
 
             return memo[i][j]
 
-        return dp(m - 1, n - 1)
+        return dp(m, n)
 
-    def minDistance3(self, word1: str, word2: str) -> int:
+    def minDistance__(self, word1: str, word2: str) -> int:
         m, n = len(word1), len(word2)
         dp = [[0] * (n + 1) for _ in range(m + 1)]
 
@@ -56,5 +56,5 @@ class Solution:
 
 if __name__ == "__main__":
     word1, word2 = "horse", "ros"
-    res = Solution().minDistance3(word1, word2)
+    res = Solution().minDistance__(word1, word2)
     assert res == 3, res

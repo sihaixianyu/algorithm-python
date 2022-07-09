@@ -1,4 +1,3 @@
-import asyncio
 from typing import List
 
 
@@ -7,40 +6,49 @@ def right_bound(nums: List[int], tar: int) -> int:
 
     while lp < rp:
         mid = lp + (rp - lp) // 2
-        if nums[mid] <= tar:
+        if nums[mid] == tar:
+            lp = mid + 1
+        elif nums[mid] < tar:
             lp = mid + 1
         elif nums[mid] > tar:
             rp = mid
 
-    return lp - 1
+    if lp == 0:
+        return -1
+
+    return lp - 1 if nums[lp - 1] == tar else -1
 
 
-async def test_case1():
-    nums = [1, 2, 2, 3]
-    tar = 2
+def right_bound2(nums: List[int], tar: int) -> int:
+    lp, rp = 0, len(nums) - 1
 
-    res = right_bound(nums, tar)
-    assert res == 2, res
-    print("case1: PASS")
+    while lp <= rp:
+        mid = lp + (rp - lp) // 2
+        if nums[mid] == tar:
+            lp = mid + 1
+        elif nums[mid] < tar:
+            lp = mid + 1
+        elif nums[mid] > tar:
+            rp = mid - 1
 
+    if lp == 0:
+        return -1
 
-async def test_case2():
-    nums = [1, 2, 3, 4, 4]
-    tar = 4
-
-    res = right_bound(nums, tar)
-    assert res == 4, res
-    print("case2: PASS")
-
-
-async def main():
-    await asyncio.gather(
-        test_case1(),
-        test_case2(),
-    )
+    return lp - 1 if nums[lp - 1] == tar else -1
 
 
 if __name__ == "__main__":
-    print("test start......")
-    asyncio.run(main())
-    print("test start......")
+    nums = [1, 2, 2, 3]
+    tar = 2
+    res = right_bound2(nums, tar)
+    assert res == 2, res
+
+    nums = [1, 2, 3, 4, 4]
+    tar = 4
+    res = right_bound2(nums, tar)
+    assert res == 4, res
+
+    nums = [1, 2, 3, 4, 5, 5]
+    tar = 5
+    res = right_bound2(nums, tar)
+    assert res == 5, res

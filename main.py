@@ -1,4 +1,4 @@
-import sys
-
 if __name__ == "__main__":
-    print(sys.path)
+    a = [1, 2, 3]
+    for i in a[1:]:
+        print(i)
