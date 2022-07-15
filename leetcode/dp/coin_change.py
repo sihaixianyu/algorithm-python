@@ -2,6 +2,7 @@ import sys
 from typing import List
 
 
+# 硬币兑换：https://leetcode.cn/problems/coin-change/
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         memo = {}
@@ -9,10 +10,8 @@ class Solution:
         def dp(amount):
             if amount == 0:
                 return 0
-
             if amount < 0:
                 return -1
-
             if amount in memo:
                 return memo[amount]
 
@@ -42,13 +41,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    coins = [1, 2, 5]
-    amount = 11
-    res = Solution().coinChange(coins, amount)
-    assert 3 == res, res
-    res = Solution().coinChange_(coins, amount)
-    assert 3 == res, res
-    
     coins = [1, 2, 5]
     amount = 11
     res = Solution().coinChange(coins, amount)
