@@ -31,6 +31,7 @@ class BinaryTree:
     @staticmethod
     def from_list(nums: List[int]) -> "BinaryTree":
         if len(nums) == 0:
+
             return BinaryTree()
 
         root = TreeNode(nums[0])
