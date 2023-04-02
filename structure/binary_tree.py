@@ -1,41 +1,27 @@
-import sys
 import unittest
 from typing import Final, List, Optional
 
-null: Final[int] = sys.maxsize
+null: Final[int] = (1 << 31) - 1
 
 
 class TreeNode:
     def __init__(self, val: int):
         self.val = val
-        self.left = None
-        self.right = None
+        self.left: Optional[TreeNode] = None
+        self.right: Optional[TreeNode] = None
 
 
 class BinaryTree:
     def __init__(self, root=None):
         self.root: Optional[TreeNode] = root
 
-    def traverse_level(self) -> List[int]:
-        return level_traverse(self.root)
-
-    def traverse_preorder(self) -> List[int]:
-        return preorder_traverse(self.root)
-
-    def traverse_inorder(self) -> List[int]:
-        return inorder_traverse(self.root)
-
-    def traverse_postorder(self) -> List[int]:
-        return postorder_traverse(self.root)
-
     @staticmethod
     def from_list(nums: List[int]) -> "BinaryTree":
         if len(nums) == 0:
-
             return BinaryTree()
 
         root = TreeNode(nums[0])
-        nodes = [root]
+        nodes: list[TreeNode | None] = [root]
 
         for v in nums[1:]:
             nodes.append(TreeNode(v) if v != null else None)
@@ -50,7 +36,7 @@ class BinaryTree:
         return BinaryTree(root)
 
 
-def level_traverse(root: TreeNode) -> List[int]:
+def level_traverse(root: TreeNode | None) -> List[int]:
     if root is None:
         return []
 
@@ -70,10 +56,10 @@ def level_traverse(root: TreeNode) -> List[int]:
     return ans
 
 
-def preorder_traverse(root: TreeNode) -> List[int]:
+def preorder_traverse(root: TreeNode | None) -> List[int]:
     ans = []
 
-    def helper(root: TreeNode):
+    def helper(root: TreeNode | None):
         if root is None:
             return
 
@@ -86,10 +72,10 @@ def preorder_traverse(root: TreeNode) -> List[int]:
     return ans
 
 
-def inorder_traverse(root: TreeNode) -> List[int]:
+def inorder_traverse(root: TreeNode | None) -> List[int]:
     ans = []
 
-    def helper(root: TreeNode):
+    def helper(root: TreeNode | None):
         if root is None:
             return
 
@@ -102,10 +88,10 @@ def inorder_traverse(root: TreeNode) -> List[int]:
     return ans
 
 
-def postorder_traverse(root: TreeNode) -> List[int]:
+def postorder_traverse(root: TreeNode | None) -> List[int]:
     ans = []
 
-    def helper(root: TreeNode):
+    def helper(root: TreeNode | None):
         if root is None:
             return
 
@@ -123,10 +109,10 @@ class TestBinaryTree(unittest.TestCase):
         nums = [1, 2, 3, null, 4, null, 5]
         tree = BinaryTree.from_list(nums)
 
-        ans = tree.traverse_preorder()
+        ans = preorder_traverse(tree.root)
         self.assertEqual(ans, [1, 2, 4, 3, 5])
 
-        ans = tree.traverse_inorder()
+        ans = inorder_traverse(tree.root)
         self.assertEqual(ans, [2, 4, 1, 3, 5])
 
     def test_level_traverse(self):
