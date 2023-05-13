@@ -13,7 +13,7 @@ class TreeNode:
 
 class BinaryTree:
     def __init__(self, root=None):
-        self.root: Optional[TreeNode] = root
+        self.root: TreeNode | None = root
 
     @staticmethod
     def from_list(nums: List[int]) -> "BinaryTree":

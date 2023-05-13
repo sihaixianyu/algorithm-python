@@ -10,17 +10,21 @@ class ListNode:
 
 
 class LinkedList:
-    def __init__(self):
-        self.root: Optional[ListNode] = None
+    def __init__(self, nums: List[int] | None):
+        if not nums:
+            self.root: Optional[ListNode] = None
+            return
+
+        return LinkedList._from_list(nums)
 
     @staticmethod
-    def from_list(nums: List[int]):
+    def _from_list(nums: List[int]):
         pass
 
 
 class TestLinkedList(unittest.TestCase):
-    def test_from_list():
+    def test_new(self):
         pass
 
-    def test_levelorder_traverse():
+    def test_traverse(self):
         pass
