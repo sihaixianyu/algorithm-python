@@ -30,7 +30,7 @@ class TestSort(unittest.TestCase):
         self.input_3 = [5, 2, 3, 1, 4]
         self.input_3 = [1, 2, 3, 4, 5]
 
-    def test_insert_sort(self):
+    def test_ok_insert_sort(self):
         ans = insert_sort(self.input_1)
         self.assertEqual(ans, self.expected_1)
 
