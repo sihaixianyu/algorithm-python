@@ -5,16 +5,8 @@ from collections import deque
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        """Number of Islands: https://leetcode.cn/problems/number-of-islands/
-
-        An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically
-
-        Args:
-            grid: A m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number
-            of islands.
-
-        Returns:
-            Total num of islands under above definition.
+        """
+        Number of Islands: https://leetcode.cn/problems/number-of-islands/
         """
         num_islands = 0
         num_rows = len(grid)

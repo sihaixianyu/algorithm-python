@@ -1,0 +1,5 @@
+[project]
+name = "algorithm-python"
+version = "0.1.0"
+description = "A description of the project"
+authors = [{ name = "sihaixianyu", email = "sihaixianyu@gmail.com" }]
