@@ -3,13 +3,12 @@ from typing import List
 
 
 class Solution:
-    """
-    @Prob: Merge Intervals
-    @Link: https://leetcode.cn/problems/merge-intervals/description/?envType=study-plan-v2&envId=top-100-liked
-    @Tags: ["array", "sorting"]
-    """
-
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        """
+        @Prob: Merge Intervals
+        @Link: https://leetcode.cn/problems/merge-intervals/description/?envType=study-plan-v2&envId=top-100-liked
+        @Tags: ["array", "sorting"]
+        """
         ans = []
 
         intervals.sort(key=lambda x: x[0])
