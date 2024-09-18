@@ -3,7 +3,7 @@ from typing import List
 
 
 def insert_sort(nums: List[int]) -> List[int]:
-    ans = list(nums)  # using nums[:] should be equivalent
+    ans = list(nums)
 
     for i in range(1, len(nums)):
         temp = ans[i]
