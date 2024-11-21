@@ -7,3 +7,7 @@ authors = [{ name = "sihaixianyu", email = "sihaixianyu@gmail.com" }]
 [tool.ruff]
 line-length = 120
 
+[tool.pyright]
+reportArgumentType = false
+reportAttributeAccessIssue = false
+reportGeneralTypeIssues = false
