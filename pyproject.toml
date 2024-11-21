@@ -9,5 +9,7 @@ line-length = 120
 
 [tool.pyright]
 reportArgumentType = false
-reportAttributeAccessIssue = false
+reportReturnType = false
+
 reportGeneralTypeIssues = false
+reportAttributeAccessIssue = false
